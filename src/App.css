@@ -1,8 +1,17 @@
+@import url(https://fonts.bunny.net/css?family=fascinate:400);
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
@@ -17,6 +26,8 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+
 
 @keyframes logo-spin {
   from {
@@ -34,7 +45,26 @@
 }
 
 .card {
-  padding: 2em;
+ background-color: rgb(241, 112, 241);
+ border-radius: 15px;
+ width: 180px;
+ height: 180px;
+}
+
+h1{
+  font-family: 'Fascinate', display;
+  margin: 10px;
+}
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+img {
+  width: 90%;
+  height: auto;
 }
 
 .read-the-docs {
