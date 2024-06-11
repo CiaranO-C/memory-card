@@ -67,6 +67,20 @@ img {
   height: auto;
 }
 
+span {
+  margin-left: 15px;
+}
+
+.play-button{
+  width: 150px;
+  height: 80px;
+  border-radius: 15px;
+  background-color: pink;
+  font-family: inherit;
+  font-size: large;
+  margin-top: 15px;
+}
+
 .read-the-docs {
   color: #888;
 }

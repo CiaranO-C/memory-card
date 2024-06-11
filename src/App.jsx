@@ -8,6 +8,8 @@ function App() {
   const [newGame, setNewGame] = useState(false);
   const [images, setImages] = useState([]);
 
+  const shuffled = images.sort(() => Math.random() - 0.5);
+
   useEffect(() => {
     getPokemon();
   }, []);
@@ -38,15 +40,46 @@ function App() {
     setImages(pokeArray);
   }
 
+  function incrementScore() {
+    const newScore = scores.score + 1;
+    const highScore = scores.highScore;
+    const newHighScore = newScore > highScore ? newScore : highScore;
+    setScores({ score: newScore, highScore: newHighScore });
+  }
+
+  function resetGame() {
+    setNewGame(true);
+    setScores({ ...scores, score: 0 });
+  }
+
   return (
     <>
       <header>
         <h1>Poke Card</h1>
+        <div className="points">
+          <p>
+            Score<span>{scores.score}</span>
+          </p>
+          <p>
+            High Score<span>{scores.highScore}</span>
+          </p>
+        </div>
       </header>
+      {newGame && (
+        <button className="play-button" onClick={() => setNewGame(false)}>
+          Play!
+        </button>
+      )}
       <main className="card-container">
-        {images.map((image) => (
-          <Card key={image.id} url={image.imageURL} />
-        ))}
+        {!newGame &&
+          shuffled.map((image) => (
+            <Card
+              key={image.id}
+              url={image.imageURL}
+              resetGame={resetGame}
+              incrementScore={incrementScore}
+            />
+          ))}
       </main>
     </>
   );

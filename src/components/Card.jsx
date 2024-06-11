@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export default function Card({ url }) {
-    const [clicked, setClicked] = useState(false);
+export default function Card({ url, resetGame, incrementScore }) {
+  const [clicked, setClicked] = useState(false);
 
-    function toggleClicked(){
-        setClicked(!clicked);
+  function toggleClicked() {
+    if (clicked) {
+      resetGame();
+    } else {
+      incrementScore();
+      setClicked(!clicked);
     }
+  }
 
   return (
     <button className="card" onClick={toggleClicked}>
